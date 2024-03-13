@@ -8,7 +8,12 @@ plugins {
 android {
     namespace = "com.fatimamostafa.jptest"
     compileSdk = 34
-
+    buildFeatures {
+        compose = true
+    }
+    composeOptions {
+        kotlinCompilerExtensionVersion = "1.5.10"
+    }
     defaultConfig {
         applicationId = "com.fatimamostafa.jptest"
         minSdk = 29
@@ -22,6 +27,9 @@ android {
             annotationProcessorOptions {
                 arguments["dagger.hilt.disableModulesHaveInstallInCheck"] = "true"
             }
+        }
+        ksp {
+            arg("room.schemaLocation", "$projectDir/schemas")
         }
     }
 
@@ -64,6 +72,9 @@ dependencies {
 
     // Compose
     implementation(libs.androidx.lifecycle.viewmodel.compose)
+    implementation(libs.androidx.compose.ui)
+    implementation(libs.androidx.compose.material3)
+    implementation(libs.androidx.compose.ui.tooling.preview)
 
     // Testing dependencies
     testImplementation(libs.junit)
