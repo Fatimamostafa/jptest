@@ -35,7 +35,7 @@ import androidx.compose.ui.unit.sp
 import com.fatimamostafa.jptest.R
 import com.fatimamostafa.jptest.domain.Planet
 import com.fatimamostafa.jptest.ui.theme.AppTheme
-
+import java.util.Random
 
 
 @Composable
@@ -43,24 +43,34 @@ fun PlanetItem(
     planet: Planet,
     modifier: Modifier = Modifier
 ) {
+    val images = listOf(
+        R.drawable.planet,
+        R.drawable.moon,
+        R.drawable.venus,
+        R.drawable.earth
+    )
+
+    val random = Random()
+    val selectedImage = images[random.nextInt(images.size)]
     Card(
-        // onClick = onClick,
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.secondaryContainer),
         modifier =
         Modifier
+            .height(120.dp)
             .padding(horizontal = 12.dp)
             .padding(bottom = 26.dp),
     ) {
         Row(
             Modifier
+                .fillMaxHeight()
                 .padding(horizontal = 12.dp)
                 .fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
             Image(
-                painter = painterResource(id = R.drawable.planet),
+                painter = painterResource(id = selectedImage),
                 contentDescription = null,
-                modifier = Modifier.size(40.dp),
+                modifier = Modifier.size(56.dp),
             )
-            Spacer(Modifier.width(12.dp))
+            Spacer(Modifier.width(8.dp))
             Text(
                 text = planet.name,
                 textAlign = TextAlign.Center,
