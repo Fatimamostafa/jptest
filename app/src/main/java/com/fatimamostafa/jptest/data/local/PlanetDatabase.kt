@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 
 @Database(
     entities = [PlanetEntity::class],
-    version = 2,
+    version = 1,
 )
 
 abstract class PlanetDatabase : RoomDatabase() {

@@ -8,7 +8,6 @@ import androidx.room.withTransaction
 import com.fatimamostafa.jptest.data.local.PlanetDatabase
 import com.fatimamostafa.jptest.data.local.PlanetEntity
 import com.fatimamostafa.jptest.data.mappers.toPlanetEntity
-import kotlinx.coroutines.delay
 import retrofit2.HttpException
 import java.io.IOException
 
@@ -50,7 +49,7 @@ class PlanetRemoteMediator(
                 planetDb.dao.upsertAll(planetEntities)
             }
 
-            //Turned off pagination
+            ///Turned off pagination
             MediatorResult.Success(
                 endOfPaginationReached = true
             )
